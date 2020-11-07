@@ -2,18 +2,12 @@
 
 ## users テーブル
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| nickname           | string  | null: false |
-| email              | string  | null: false |
-| password           | string  | null: false |
-| user_birth_date_1i | integer | null: false |
-| user_birth_date_2i | integer | null: false |
-| user_birth_date_3i | integer | null: false |
-| first_name         | string  | null: false |
-| last_name          | string  | null: false |
-| first_name_kana    | string  | null: false |
-| last_name_kana     | string  | null: false |
+| Column           | Type   | Options     |
+| ---------------- | ------ | ----------- |
+| nickname         | string | null: false |
+| email            | string | null: false |
+| password         | string | null: false |
+| password_confirm | string | null: false |
 
 ###Association
 
@@ -21,6 +15,24 @@
 - has_many :comments
 - has_many :orders
 - has_many :item, through: orders
+- has_one :address
+
+## address
+
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| user_id            | references | null: false, foreign_key: true |
+| user_birth_date_1i | integer    | null: false                    |
+| user_birth_date_2i | integer    | null: false                    |
+| user_birth_date_3i | integer    | null: false                    |
+| first_name         | string     | null: false                    |
+| last_name          | string     | null: false                    |
+| first_name_kana    | string     | null: false                    |
+| last_name_kana     | string     | null: false                    |
+
+###Association
+
+- belongs_to
 
 ## items
 
