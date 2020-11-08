@@ -28,8 +28,7 @@
 | description | text       | null: false                    |
 | category    | string     | null: false                    |
 | condition   | string     | null: false                    |
-| costs       | string     | null: false                    |
-| last_name   | string     | null: false                    |
+| cost        | string     | null: false                    |
 | area        | string     | null: false                    |
 | way_time    | string     | null: false                    |
 | user        | references | null: false, foreign_key: true |
