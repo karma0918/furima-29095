@@ -58,7 +58,10 @@ group :production do
 end
 gem 'devise'
 gem 'pry-rails'
+<<<<<<< HEAD
 gem 'factory_bot_rails'
 group :development do
 gem 'rubocop', require: false
 end
+=======
+>>>>>>> parent of d6a070d... factorybotで最適化
