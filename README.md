@@ -2,55 +2,50 @@
 
 ## users テーブル
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| nickname           | string  | null: false |
-| email              | string  | null: false |
-| password           | string  | null: false |
-| user_birth_date_1i | integer | null: false |
-| user_birth_date_2i | integer | null: false |
-| user_birth_date_3i | integer | null: false |
-| first_name         | string  | null: false |
-| last_name          | string  | null: false |
-| first_name_kana    | string  | null: false |
-| last_name_kana     | string  | null: false |
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| nickname           | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| user_birth_date    | date   | null: false |
+| first_name         | string | null: false |
+| last_name          | string | null: false |
+| first_name_kana    | string | null: false |
+| last_name_kana     | string | null: false |
 
 ###Association
 
 - has_many :items
 - has_many :comments
 - has_many :orders
-- has_many :item, through: orders
 
 ## items
 
-| Column      | Type       | Options                        |
-| ----------- | ---------- | ------------------------------ |
-| name        | string     | null: false                    |
-| price       | string     | null: false                    |
-| image       | string     | null: false                    |
-| Description | text       | null: false                    |
-| Category    | string     | null: false                    |
-| Condition   | string     | null: false                    |
-| costs       | string     | null: false                    |
-| last_name   | string     | null: false                    |
-| area        | string     | null: false                    |
-| Time        | string     | null: false                    |
-| user_id     | references | null: false, foreign_key: true |
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| name         | string     | null: false                    |
+| price        | integer    | null: false                    |
+| description  | text       | null: false                    |
+| category_id  | integer    | null: false                    |
+| condition_id | integer    | null: false                    |
+| cost_id      | integer    | null: false                    |
+| area_id      | integer    | null: false                    |
+| way_time_id  | integer    | null: false                    |
+| user         | references | null: false, foreign_key: true |
 
 ###Association
 
 - has_many :comments
 - belongs_to :user
-- has_one :orders
+- has_one :order
 
 ## comments
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
 | comment | text       | null: false                    |
-| item_id | references | null: false, foreign_key: true |
-| user_id | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
 
 ###Association
 
@@ -59,18 +54,29 @@
 
 ## orders
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| postal-code  | integer    | null: false                    |
-| prefecture   | string     | null: false                    |
-| city         | string     | null: false                    |
-| addresses    | string     | null: false                    |
-| building     | string     | null: false                    |
-| phone-number | integer    | null: false                    |
-| item_id      | references | null: false, foreign_key: true |
-| user_id      | references | null: false, foreign_key: true |
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| item   | references | null: false, foreign_key: true |
+| user   | references | null: false, foreign_key: true |
 
 ###Association
 
 - belongs_to :user
 - belongs_to :item
+- has_one :address
+
+## addresses
+
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| postal_code   | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| city          | string     | null: false                    |
+| addresses     | string     | null: false                    |
+| phone_number  | string     | null: false                    |
+| building      | string     |
+| order         | references | null: false, foreign_key: true |  |
+
+###Association
+
+- belongs_to :order
