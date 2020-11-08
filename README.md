@@ -32,7 +32,7 @@
 | last_name   | string     | null: false                    |
 | area        | string     | null: false                    |
 | Time        | string     | null: false                    |
-| user_id     | references | null: false, foreign_key: true |
+| user        | references | null: false, foreign_key: true |
 
 ###Association
 
