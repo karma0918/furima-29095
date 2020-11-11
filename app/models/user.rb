@@ -11,6 +11,7 @@ class User < ApplicationRecord
     validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: '全角カナ'}
     validates :last_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: '全角カナ'}
     validates :birthday
+    validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   end
   end
 
