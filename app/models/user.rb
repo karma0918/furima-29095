@@ -17,5 +17,6 @@ class User < ApplicationRecord
     validates :birthday
     validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   end
+  has_many :items
   end
 
