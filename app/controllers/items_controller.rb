@@ -3,11 +3,12 @@ class ItemsController < ApplicationController
     
   end
   def new
+    before_action :authenticate_user!
     @item = Item.new
   end
   def create
+    before_action :authenticate_user!
     @item = Item.new(item_params)
-    @item.valid?
     if @item.save
       redirect_to root_path
     else
