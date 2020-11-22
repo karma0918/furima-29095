@@ -8,6 +8,6 @@ FactoryBot.define do
     cost_id { 2 }
     area_id { 2 }
     way_time_id { 2 }
-    user_id { association :user }
+    association :user 
   end
 end
