@@ -59,12 +59,12 @@ RSpec.describe Item, type: :model do
   it "価格が９９９９９９９円以上では登録できないこと" do
     @item.price = 10000000
     @item.valid?
-    expect(@item.errors.full_messages).to include("Price is not included in the list", "User must exist", "User must exist")
+    expect(@item.errors.full_messages).to include("Price is not included in the list", "User must exist")
   end
   it "販売価格は半角数字のみ保存可能" do
-    @item.price = ９０００
+    @item.price = '９０００'
     @item.valid?
-    expect(@item.errors.full_messages).to include("Price is not included in the list", "User must exist", "User must exist")
+    expect(@item.errors.full_messages).to include("Price is not included in the list", "User must exist")
   end
 
 

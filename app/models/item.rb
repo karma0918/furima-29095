@@ -8,7 +8,7 @@ class Item < ApplicationRecord
     validates :condition_id, numericality: { other_than: 0 }
     validates :cost_id, numericality: { other_than: 0 }
     validates :way_time_id, numericality: { other_than: 0 }
-    validates :price, inclusion: { in: 300..999999999},format: { with: /\A[0-9]+\z/,message:"半角数字で入力"}
+    validates :price, inclusion: { in: 300..9999999},format: { with: /\A[0-9]+\z/,message:"半角数字で入力"}
     validates :name
     validates :description
     validates :image
