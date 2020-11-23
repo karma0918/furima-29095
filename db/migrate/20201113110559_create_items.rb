@@ -9,6 +9,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :cost_id
       t.integer :area_id
       t.integer :way_time_id
+      
       t.timestamps
     end
   end
