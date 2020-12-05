@@ -36,10 +36,10 @@ class ItemsController < ApplicationController
       render :edit
   end
  end
-# def destroy
-#   item = Item.find(parmas[:id])
-#   item.destroy
-# end
+ def destroy
+   item = Item.find(parmas[:id])
+   item.destroy
+ end
   private
   def item_params
     params.require(:item).permit( :name, :price, :description, :category_id, :condition_id, :cost_id, :area_id, :way_time_id, :image).merge(user_id: current_user.id)
