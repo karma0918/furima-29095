@@ -22,7 +22,8 @@ class ItemsController < ApplicationController
 
   end
  def edit
-
+   if  current_user.id == @item.user_id 
+   end
  end
  def update
 
