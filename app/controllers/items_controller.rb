@@ -52,8 +52,7 @@ class ItemsController < ApplicationController
 
   end
   def mine
-    if  current_user.id == @item.user_id 
-    else
+    unless current_user.id == @item.user_id
       render :index
     end
   end
