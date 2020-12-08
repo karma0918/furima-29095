@@ -18,5 +18,6 @@ class User < ApplicationRecord
     validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   end
   has_many :items
+  has_many :order
   end
 

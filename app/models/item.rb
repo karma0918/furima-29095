@@ -19,4 +19,5 @@ class Item < ApplicationRecord
   belongs_to :cost
   belongs_to :way_time
   belongs_to :user
+  has_one :order
 end
