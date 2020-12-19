@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   def index
     if user_signed_in?
     end
+    end
     @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new
 

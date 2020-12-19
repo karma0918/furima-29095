@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:user).order("created_at ASC")
+    @order = Order.new
   end
   def new
 
@@ -20,7 +21,8 @@ class ItemsController < ApplicationController
     end
   end
   def show
-
+    @order = Order.new
+    
   end
  def edit
 
