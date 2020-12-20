@@ -42,5 +42,22 @@ RSpec.describe OrderAddress, type: :model do
     @order_address.valid?
     expect(@order_address.errors.full_messages).to include("Phone can't be blank", "Phone is invalid")
     end
+    it "都道府県を選択しなければならない" do
+      @order_address.area = 0
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include("Area must be other than 0")
+
+    end
+    it "ハイフンをいれないといけない" do
+      @order_address.postal = 1960015
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include("Postal is invalid")
+    end
+    it "半角数字で打たないといけない" do
+      @order_address.phone = "０８０６５６６９８５９"
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include("Phone is invalid")
+
+    end
   end
 end

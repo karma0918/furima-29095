@@ -11,6 +11,8 @@ class OrderAddress
        validates :address
        validates :building
        validates :phone, format: { with: /\A[0-9]+\z/, messages: '半角数字で入力してください'}
+       validates :item_id 
+       validates :user_id
     end
 
     
