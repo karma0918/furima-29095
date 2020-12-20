@@ -22,10 +22,12 @@ class ItemsController < ApplicationController
   end
   def show
     @order = Order.new
-    
+
   end
  def edit
-
+  if @item.order.present?
+    redirect_to root_path
+  end
  end
  def update
 

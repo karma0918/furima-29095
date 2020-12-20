@@ -18,7 +18,7 @@ class OrderAddress
       order = Order.create(user_id: user_id, item_id:item_id)
 
       Address.create(postal: postal, area: area, city: city, address: address, building: building, phone: phone,order_id: order)
-      binding.pry
+      
     end
   
 end

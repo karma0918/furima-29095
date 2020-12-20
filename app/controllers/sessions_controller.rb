@@ -1,17 +1,23 @@
 class SessionsController < ApplicationController
   def index
-    if user_signed_in?
-    end
+
+    unless user_signed_in?
+      redirect_to new_user_registration_path
     end
     @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new
+    if  current_user == @item.user
+      redirect_to root_path
+    end
+    if @item.order.present?
+      redirect_to root_path
+    end
 
   end
 
    def create
     @item = Item.find(params[:item_id])
      @order_address = OrderAddress.new(address_params)
-     binding.pry
      if @order_address.valid?
        @order_address.save
        redirect_to root_path
