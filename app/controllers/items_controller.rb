@@ -1,8 +1,10 @@
 class ItemsController < ApplicationController
-
+  
+  before_action :sing_up, only: [:edit,:destroy,:create]
   before_action :authenticate_user!, only: [:new,:create]
   before_action :set_item, only: [:show, :edit,:update,:destroy]
   before_action :mine, only: [:edit,:destroy]
+
 
   def index
     @items = Item.includes(:user).order("created_at ASC")
@@ -25,6 +27,7 @@ class ItemsController < ApplicationController
 
   end
  def edit
+
   if @item.order.present?
     redirect_to root_path
   end
@@ -59,5 +62,9 @@ class ItemsController < ApplicationController
       render :index
     end
   end
-
+  def sing_up
+    unless user_signed_in?
+      redirect_to new_user_registration_path
+    end
+  end
 end
