@@ -9,8 +9,8 @@ class OrderAddress
        validates :postal, format: { with: /\A\d{3}[-]\d{4}\z/, messages:'ハイフン込の半角で入力してください'}
        validates :city
        validates :address
-       validates :building
-       validates :phone, format: { with: /\A[0-9]+\z/, messages: '半角数字で入力してください'}
+
+       validates :phone, format: { with: /\A[0-9]+\z/, messages: '半角数字で入力してください'}, length: { maximum: 11 }
        validates :item_id 
        validates :user_id
     end
