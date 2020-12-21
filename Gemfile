@@ -66,3 +66,4 @@ gem 'rubocop', require: false
 gem 'active_hash'
 end
 gem 'mini_magick'
+gem 'payjp'
