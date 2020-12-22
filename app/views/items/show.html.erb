@@ -26,9 +26,13 @@
     </div>
 <% if user_signed_in? %>
   <% if  current_user.id == @item.user_id %>
-      <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
-      <p class='or-text'>or</p>
-      <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
+      <%if @item.order.present? %>
+      
+      <%else%>
+        <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
+        <p class='or-text'>or</p>
+        <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
+      <%end%>
   <% else %>
       <%# 商品が売れていない場合はこちらを表示しましょう %>
       <%if @item.order.present? %>
@@ -38,7 +42,9 @@
       <% end %>
       <%# //商品が売れていない場合はこちらを表示しましょう %>
   <% end %>
+  
 <% end %>
+
       <div class="item-explain-box">
         <span><%= @item.description %></span>
       </div>
