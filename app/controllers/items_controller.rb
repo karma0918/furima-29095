@@ -1,9 +1,10 @@
 class ItemsController < ApplicationController
 
-  before_action :sing_up, only: [:edit,:destroy,:create]
+
   before_action :authenticate_user!, only: [:new,:create]
   before_action :set_item, only: [:show, :edit,:update,:destroy]
   before_action :mine, only: [:edit,:destroy]
+  before_action :authenticate_user!, only: [:destroy,:create,:edit]
 
 
   def index
@@ -58,11 +59,6 @@ class ItemsController < ApplicationController
   def mine
     unless current_user.id == @item.user_id
       render :index
-    end
-  end
-  def sing_up
-    unless user_signed_in?
-      redirect_to new_user_registration_path
     end
   end
 end
