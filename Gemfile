@@ -50,7 +50,6 @@ group :test do
   gem 'webdrivers'
   gem 'rspec-rails', '~> 4.0.0'
   gem 'faker'
-  gem 'active_hash'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -63,7 +62,7 @@ gem 'pry-rails'
 gem 'factory_bot_rails'
 group :development do
 gem 'rubocop', require: false
-gem 'active_hash'
 end
+gem 'active_hash'
 gem 'mini_magick'
 gem 'payjp'
